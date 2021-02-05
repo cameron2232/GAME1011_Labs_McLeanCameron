@@ -5,8 +5,6 @@
 #include <string>
 using namespace std;
 
-enum CharacterType {JEDI, SITH, MANDALORIAN};
-
 class Character
 {
 private:
@@ -120,15 +118,10 @@ public:
 class Jedi : public Character
 {
 private:
-	CharacterType m_alliance;
 	Weapon* m_weapon;
 public:
-	Jedi(string name, int health, CharacterType alliance, Weapon* weapon);
+	Jedi(string name, int health, Weapon* weapon);
 
-	void SetAlliance (CharacterType alliance)
-	{
-		m_alliance = alliance;
-	}
 
 	void SetWeapon(Weapon* weapon)
 	{
@@ -138,11 +131,6 @@ public:
 		m_weapon->SetDesc(weapon->GetDesc() + " Jedi's utilize this tool to learn focus\nand discipline, as well as defending the balance of the Universe.");
 		m_weapon->SetDamage(weapon->GetDamage()+75);
 		m_weapon->SetAbilities("Force Push", "Mind Trick", "Force Bond");
-	}
-
-	CharacterType GetAlliance() const
-	{
-		return m_alliance;
 	}
 
 	Weapon* GetWeapon() const
@@ -162,15 +150,9 @@ public:
 class Sith : public Character
 {
 private:
-	CharacterType m_alliance;
 	Weapon* m_weapon;
 public:
-	Sith(string name, int health, CharacterType alliance, Weapon* weapon);
-	
-	void SetAlliance(CharacterType alliance)
-	{
-		m_alliance = alliance;
-	}
+	Sith(string name, int health, Weapon* weapon);
 
 	void SetWeapon(Weapon* weapon)
 	{
@@ -181,11 +163,6 @@ public:
 		+ " to the Sith's will.");
 		m_weapon->SetDamage(weapon->GetDamage() + 125);
 		m_weapon->SetAbilities("Unrelenting Power", "Force Lightning", "Force Bleed");
-	}
-
-	CharacterType GetAlliance() const
-	{
-		return m_alliance;
 	}
 
 	Weapon* GetWeapon() const
@@ -202,16 +179,10 @@ public:
 class Mandalorian : public Character
 {
 private:
-	CharacterType m_alliance;
 	Weapon* m_weapon;
 public:
-	Mandalorian(string name, int health, CharacterType alliance, Weapon* weapon);
+	Mandalorian(string name, int health, Weapon* weapon);
 	
-	void SetAlliance(CharacterType alliance)
-	{
-		m_alliance = alliance;
-	}
-
 	void SetWeapon(Weapon* weapon)
 	{
 		//m_weapon = weapon;
@@ -220,11 +191,6 @@ public:
 		m_weapon->SetDesc("A disruptor sniper rifle, most iconically utilized by the bounty hunter Din Djarin.");
 		m_weapon->SetDamage(weapon->GetDamage() + 150);
 		m_weapon->SetAbilities("Grappling Line", "Paralysis Dart", "Repulsor Blast");
-	}
-
-	CharacterType GetAlliance() const
-	{
-		return m_alliance;
 	}
 
 	Weapon* GetWeapon() const

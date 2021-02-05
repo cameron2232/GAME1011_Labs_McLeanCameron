@@ -17,20 +17,12 @@ using namespace std;
 int main()
 {
 	Weapon Lightsaber("Lightsaber", "A blade of plasma powered by Kyber Crystals.", 10);
-	Character* Characters[10] = { nullptr };
+	Character* Characters[15] = { nullptr };
 	
-	Characters[0] = new Jedi("Luke Skywalker", 100, JEDI, &Lightsaber);
-	
-	for (int i = 0; i < 10; i++)
-	{
-		Character* pCharacter = Characters[i];
-		if (pCharacter == nullptr)
-		{
-			continue;
-		}
-		cout << "Deleting character...";
-		delete pCharacter;
-	}
+
+
+
+	//Displays weapon
 	for (int i = 0; i < 10; i++)
 	{
 		Character* pCharacter = Characters[i];

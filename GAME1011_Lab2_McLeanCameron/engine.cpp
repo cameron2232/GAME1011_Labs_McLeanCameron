@@ -1,26 +1,23 @@
 #include "engine.h"
 
-Jedi::Jedi(string name, int health, CharacterType alliance, Weapon* weapon)
+Jedi::Jedi(string name, int health, Weapon* weapon)
 {
 	SetName(name);
 	SetHealth(health);
-	SetAlliance(alliance);
 	SetWeapon(weapon);
 }
 
-Sith::Sith(string name, int health, CharacterType alliance, Weapon* weapon)
+Sith::Sith(string name, int health, Weapon* weapon)
 {
 	SetName(name);
 	SetHealth(health);
-	SetAlliance(alliance);
 	SetWeapon(weapon);
 }
 
-Mandalorian::Mandalorian(string name, int health, CharacterType alliance, Weapon* weapon)
+Mandalorian::Mandalorian(string name, int health, Weapon* weapon)
 {
 	SetName(name);
 	SetHealth(health);
-	SetAlliance(alliance);
 	SetWeapon(weapon);
 }
 
