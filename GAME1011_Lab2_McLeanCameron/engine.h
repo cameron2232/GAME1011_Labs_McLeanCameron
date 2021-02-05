@@ -14,6 +14,11 @@ private:
 	int m_health;
 public:
 	Character() {}
+
+	virtual ~Character()
+	{
+		
+	}
 	Character(string name, int health)
 	{
 		SetHealth(health);
@@ -79,6 +84,13 @@ public:
 	{
 		m_damage = damage;
 	}
+
+	void SetAbilities(string ability1, string ability2, string ability3)
+	{
+		m_abilities[0] = ability1;
+		m_abilities[1] = ability2;
+		m_abilities[2] = ability3;
+	}
 	
 	string GetWeaponName()
 	{
@@ -95,6 +107,13 @@ public:
 		return m_damage;
 	}
 
+	string GetAbilities(int i)
+	{
+		return m_abilities[i];
+	}
+
+	
+	friend ostream& operator<<(ostream& out, Weapon* weapon);
 };
 
 
@@ -116,8 +135,9 @@ public:
 		//m_weapon = weapon;
 		m_weapon = new Weapon;
 		m_weapon->SetWeaponName("Blue " + weapon->GetWeaponName());
-		m_weapon->SetDesc(weapon->GetDesc() + " Jedi's utilize this tool to learn focus and discipline,\nas well as defending the balance of the Universe.");
+		m_weapon->SetDesc(weapon->GetDesc() + " Jedi's utilize this tool to learn focus\nand discipline, as well as defending the balance of the Universe.");
 		m_weapon->SetDamage(weapon->GetDamage()+75);
+		m_weapon->SetAbilities("Force Push", "Mind Trick", "Force Bond");
 	}
 
 	CharacterType GetAlliance() const
@@ -132,26 +152,90 @@ public:
 
 	void DisplayInfo() override
 	{
-		cout << m_weapon->GetWeaponName() << endl << m_weapon->GetDesc() << endl << m_weapon->GetDamage();
+		cout << m_weapon;
 	}
 
+	
 };
 
 
 class Sith : public Character
 {
 private:
-	
+	CharacterType m_alliance;
+	Weapon* m_weapon;
 public:
+	Sith(string name, int health, CharacterType alliance, Weapon* weapon);
 	
+	void SetAlliance(CharacterType alliance)
+	{
+		m_alliance = alliance;
+	}
+
+	void SetWeapon(Weapon* weapon)
+	{
+		//m_weapon = weapon;
+		m_weapon = new Weapon;
+		m_weapon->SetWeaponName("Red " + weapon->GetWeaponName());
+		m_weapon->SetDesc(weapon->GetDesc() + " A Sith utilizes the lightsaber to cause pain\nand destruction. A Sith lightsaber is red because the Kyber Crystal has been stolen, and are bleeding from being\nforced to bend"
+		+ " to the Sith's will.");
+		m_weapon->SetDamage(weapon->GetDamage() + 125);
+		m_weapon->SetAbilities("Unrelenting Power", "Force Lightning", "Force Bleed");
+	}
+
+	CharacterType GetAlliance() const
+	{
+		return m_alliance;
+	}
+
+	Weapon* GetWeapon() const
+	{
+		return m_weapon;
+	}
+
+	void DisplayInfo() override
+	{
+		cout << m_weapon;
+	}
 };
 
 class Mandalorian : public Character
 {
 private:
-	
+	CharacterType m_alliance;
+	Weapon* m_weapon;
 public:
+	Mandalorian(string name, int health, CharacterType alliance, Weapon* weapon);
 	
+	void SetAlliance(CharacterType alliance)
+	{
+		m_alliance = alliance;
+	}
+
+	void SetWeapon(Weapon* weapon)
+	{
+		//m_weapon = weapon;
+		m_weapon = new Weapon;
+		m_weapon->SetWeaponName("Amban phase-pulse blaster");
+		m_weapon->SetDesc("A disruptor sniper rifle, most iconically utilized by the bounty hunter Din Djarin.");
+		m_weapon->SetDamage(weapon->GetDamage() + 150);
+		m_weapon->SetAbilities("Grappling Line", "Paralysis Dart", "Repulsor Blast");
+	}
+
+	CharacterType GetAlliance() const
+	{
+		return m_alliance;
+	}
+
+	Weapon* GetWeapon() const
+	{
+		return m_weapon;
+	}
+
+	void DisplayInfo() override
+	{
+		cout << m_weapon;
+	}
 };
 
 #endif
