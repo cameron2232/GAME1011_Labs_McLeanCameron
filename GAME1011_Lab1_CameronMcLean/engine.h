@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #ifndef _ENGINE_H_
 #define _ENGINE_H_
 #include <iostream>
@@ -48,7 +47,6 @@ public:
 
 	string m_aName, m_aDescription;
 	int m_aScore;
-
 
 	void GetAchievement();
 
