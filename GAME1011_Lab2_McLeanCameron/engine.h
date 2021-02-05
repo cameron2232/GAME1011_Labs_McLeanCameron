@@ -23,7 +23,7 @@ public:
 		SetName(name);
 	}
 
-	void SetName(string name)
+	virtual void SetName(string name)
 	{
 		m_name = name;
 	}
@@ -61,12 +61,16 @@ public:
 	Character* character;
 	Weapon() {}
 	
-	Weapon(string weapon, string description, int damage)
+	/*Weapon(string weapon, string description, int damage, string ability1, string ability2, string ability3)
 	{
 		SetWeaponName(weapon);
 		SetDesc(description);
 		SetDamage(damage);
-	}
+		SetAbilities(ability1, ability2, ability3);
+	}*/
+
+	virtual void SetWeapon()
+	{}
 
 	void SetWeaponName(string weapon)
 	{
@@ -120,19 +124,23 @@ class Jedi : public Character
 private:
 	Weapon* m_weapon;
 public:
-	Jedi(string name, int health, Weapon* weapon);
-
-
-	void SetWeapon(Weapon* weapon)
+	Jedi(string name, int health);
+	
+	void SetWeapon()
 	{
-		//m_weapon = weapon;
 		m_weapon = new Weapon;
-		m_weapon->SetWeaponName("Blue " + weapon->GetWeaponName());
-		m_weapon->SetDesc(weapon->GetDesc() + " Jedi's utilize this tool to learn focus\nand discipline, as well as defending the balance of the Universe.");
-		m_weapon->SetDamage(weapon->GetDamage()+75);
+		m_weapon->SetWeaponName("Blue Lightsaber");
+		m_weapon->SetDesc("A blade of plasma powered by Kyber Crystals. Jedi's utilize this tool to learn focus\nand discipline, as well as defending the balance of the Universe.");
+		m_weapon->SetDamage(90);
 		m_weapon->SetAbilities("Force Push", "Mind Trick", "Force Bond");
 	}
 
+	void SetName(string name) override
+	{
+		name = "Jedi Master " + name;
+		Character::SetName(name); 
+	}
+	
 	Weapon* GetWeapon() const
 	{
 		return m_weapon;
@@ -140,10 +148,11 @@ public:
 
 	void DisplayInfo() override
 	{
+		cout << GetName();
+		cout << " | ";
 		cout << m_weapon;
 	}
 
-	
 };
 
 
@@ -152,17 +161,21 @@ class Sith : public Character
 private:
 	Weapon* m_weapon;
 public:
-	Sith(string name, int health, Weapon* weapon);
+	Sith(string name, int health);
 
-	void SetWeapon(Weapon* weapon)
+	void SetWeapon()
 	{
-		//m_weapon = weapon;
 		m_weapon = new Weapon;
-		m_weapon->SetWeaponName("Red " + weapon->GetWeaponName());
-		m_weapon->SetDesc(weapon->GetDesc() + " A Sith utilizes the lightsaber to cause pain\nand destruction. A Sith lightsaber is red because the Kyber Crystal has been stolen, and are bleeding from being\nforced to bend"
-		+ " to the Sith's will.");
-		m_weapon->SetDamage(weapon->GetDamage() + 125);
+		m_weapon->SetWeaponName("Red Lightsaber");
+		m_weapon->SetDesc("A blade of plasma powered by Kyber Crystals. A Sith utilizes the lightsaber to cause pain\nand destruction. A Sith lightsaber is red because the Kyber Crystal has been stolen, and are bleeding from being\nforced to bend to the Sith's will.");
+		m_weapon->SetDamage(125);
 		m_weapon->SetAbilities("Unrelenting Power", "Force Lightning", "Force Bleed");
+	}
+
+	void SetName(string name) override
+	{
+		name = "Darth " + name;
+		Character::SetName(name);
 	}
 
 	Weapon* GetWeapon() const
@@ -172,8 +185,11 @@ public:
 
 	void DisplayInfo() override
 	{
+		cout << GetName();
+		cout << " | ";
 		cout << m_weapon;
 	}
+
 };
 
 class Mandalorian : public Character
@@ -181,16 +197,21 @@ class Mandalorian : public Character
 private:
 	Weapon* m_weapon;
 public:
-	Mandalorian(string name, int health, Weapon* weapon);
+	Mandalorian(string name, int health);
 	
-	void SetWeapon(Weapon* weapon)
+	void SetWeapon()
 	{
-		//m_weapon = weapon;
 		m_weapon = new Weapon;
 		m_weapon->SetWeaponName("Amban phase-pulse blaster");
 		m_weapon->SetDesc("A disruptor sniper rifle, most iconically utilized by the bounty hunter Din Djarin.");
-		m_weapon->SetDamage(weapon->GetDamage() + 150);
+		m_weapon->SetDamage(150);
 		m_weapon->SetAbilities("Grappling Line", "Paralysis Dart", "Repulsor Blast");
+	}
+
+	void SetName(string name) override
+	{
+		name = "Mand'alor " + name;
+		Character::SetName(name);
 	}
 
 	Weapon* GetWeapon() const
@@ -200,8 +221,11 @@ public:
 
 	void DisplayInfo() override
 	{
+		cout << GetName();
+		cout << " | ";
 		cout << m_weapon;
 	}
+
 };
 
 #endif

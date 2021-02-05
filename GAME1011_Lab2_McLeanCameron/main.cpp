@@ -1,28 +1,22 @@
 #include "engine.h"
 #include <iostream>
 using namespace std;
-/*Jedi Luke("Luke Skywalker", 100, JEDI, &Lightsaber);
-	Sith Ben("Kylo Ren", 85, SITH, &Lightsaber);*/
-	/*Characters[0] = new Jedi("Luke Skywalker", 100, JEDI, &Lightsaber);
-	Characters[1] = new Sith ("Kylo Ren", 85, SITH, &Lightsaber);*/ //TODO: test code, delete before submission
-
-
-	/*BobaFet.DisplayInfo();
-	cout << endl << endl;
-	Ben.DisplayInfo();
-	cout << endl << endl;
-	Luke.DisplayInfo();*/
-
 
 int main()
 {
-	Weapon Lightsaber("Lightsaber", "A blade of plasma powered by Kyber Crystals.", 10);
 	Character* Characters[15] = { nullptr };
-	
+
+
+	Character tempCharacter("Cameron", 100);
+	Characters[1] = new Jedi("Cameron", 100);
+	Characters[2] = new Sith(tempCharacter.GetName(), tempCharacter.GetHealth());
+	Characters[3] = new Mandalorian(tempCharacter.GetName(), tempCharacter.GetHealth());
 
 
 
-	//Displays weapon
+
+
+
 	for (int i = 0; i < 10; i++)
 	{
 		Character* pCharacter = Characters[i];
@@ -32,7 +26,5 @@ int main()
 		}
 		pCharacter->DisplayInfo();
 	}
-
-
 
 }
