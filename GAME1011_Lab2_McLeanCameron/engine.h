@@ -3,6 +3,7 @@
 #define _ENGINE_H_
 #include <iostream>
 #include <string>
+#include <windows.h>
 using namespace std;
 
 class Character
@@ -45,7 +46,7 @@ public:
 	
 	virtual void DisplayInfo()
 	{
-		cout << "Name: " << GetName() << endl << "Health: " << GetHealth();
+		cout << "Name: " << GetName() << " | Health: " << GetHealth();
 	}
 };
 
@@ -60,17 +61,6 @@ private:
 public:
 	Character* character;
 	Weapon() {}
-	
-	/*Weapon(string weapon, string description, int damage, string ability1, string ability2, string ability3)
-	{
-		SetWeaponName(weapon);
-		SetDesc(description);
-		SetDamage(damage);
-		SetAbilities(ability1, ability2, ability3);
-	}*/
-
-	virtual void SetWeapon()
-	{}
 
 	void SetWeaponName(string weapon)
 	{
@@ -149,7 +139,7 @@ public:
 	void DisplayInfo() override
 	{
 		cout << GetName();
-		cout << " | ";
+		cout << " | Health: " << GetHealth() << " | ";
 		cout << m_weapon;
 	}
 
@@ -186,7 +176,7 @@ public:
 	void DisplayInfo() override
 	{
 		cout << GetName();
-		cout << " | ";
+		cout << " | Health: " << GetHealth() << " | ";
 		cout << m_weapon;
 	}
 
@@ -222,10 +212,14 @@ public:
 	void DisplayInfo() override
 	{
 		cout << GetName();
-		cout << " | ";
+		cout << " | Health: " << GetHealth() << " | ";
 		cout << m_weapon;
 	}
 
 };
+
+
+
+
 
 #endif

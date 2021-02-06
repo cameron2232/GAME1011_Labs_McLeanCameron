@@ -27,3 +27,4 @@ ostream& operator<<(ostream& out, Weapon* weapon)
 	<< " | Ability 3: " << weapon->GetAbilities(2) << "\n------------------------------------------------------------------------------------------------------------------------\n\n";
 	return out;
 }
+
